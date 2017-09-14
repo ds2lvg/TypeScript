@@ -1,4 +1,6 @@
 alert("Hello Github");
+alert("Hello Github");
+console.log("hello world");
 console.log("hello world");
 /*
 1. 폴더 열기로 푸시할 폴더부터 선택
