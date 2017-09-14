@@ -1,4 +1,4 @@
-// typescript 컴파일해서 .js 파일도 같이 업로드 해보기.
+// 마스터브런치
 alert("Hello Github");
 console.log("Hello Typescript");
 /*
