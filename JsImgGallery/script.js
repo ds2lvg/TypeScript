@@ -46,10 +46,12 @@ req.send();
 function selectAll(btn){
     var images = document.getElementsByClassName("image");
     for(var i = 0; i< images.length; i++) {
-        // 버튼클릭시 이미지 전체 선택
+        // "Unselect All" 버튼 클릭시 이미지 전체 선택 해제 
         if (btn.value == "Unselect All") {
             images[i].setAttribute("class", "image");
             // IE 미지원 images[i].classList.remove("image-selected");
+        
+        // "Select All"버튼클릭시 이미지 전체 선택
         } else {
             images[i].setAttribute("class", "image image-selected");
             // IE 미지원 images[i].classList.add("image-selected");
@@ -62,4 +64,3 @@ function selectAll(btn){
         btn.value = "Unselect All";
     }
 }
-
