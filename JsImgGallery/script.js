@@ -18,6 +18,7 @@ req.onreadystatechange = function() {
             // div에 클래스 설정
             div.setAttribute("class","image");
 
+            // 이미지 클릭했을때 CSS효과가 toggle 되는거 구현
             div.onclick = function(){
                 // class에서 image-selected가 있다면 
                 if(this.getAttribute("class").indexOf("image-selected") == -1){
@@ -25,7 +26,7 @@ req.onreadystatechange = function() {
                 }else {
                     this.setAttribute("class", "image");
                 }
-                // 이건 IE 미지원 this.classList.toggle("image-selected");
+                // IE 미지원 this.classList.toggle("image-selected");
                 
             }
 
@@ -41,3 +42,24 @@ req.onreadystatechange = function() {
     }
 }
 req.send();
+
+function selectAll(btn){
+    var images = document.getElementsByClassName("image");
+    for(var i = 0; i< images.length; i++) {
+        // 버튼클릭시 이미지 전체 선택
+        if (btn.value == "Unselect All") {
+            images[i].setAttribute("class", "image");
+            // IE 미지원 images[i].classList.remove("image-selected");
+        } else {
+            images[i].setAttribute("class", "image image-selected");
+            // IE 미지원 images[i].classList.add("image-selected");
+        }
+    }
+    // 버튼안에 글씨 토글변경
+    if (btn.value == "Unselect All") {
+        btn.value = "select All";
+    } else {
+        btn.value = "Unselect All";
+    }
+}
+
