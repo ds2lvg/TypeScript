@@ -27,6 +27,7 @@ body{
 }
 .image-magnified{
     z-index:1;
+    overflow: visible;
 }
 .image-magnified > img{
     height:400px;
