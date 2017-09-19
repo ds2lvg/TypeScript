@@ -29,6 +29,21 @@ req.onreadystatechange = function() {
                 // IE 미지원 this.classList.toggle("image-selected");
                 
             }
+            // 마우스 오버시
+            div.onmouseover = function(){
+                //setTimeout 안에 this가 div를 가리키도록 외부에 적어줌
+                var element = this;
+                // mouseout 될때 duration을 초기화 하기 위해 this.timeId에 담음 
+                this.timeId = setTimeout( function(){
+                    element.setAttribute("class", "image image-magnified");
+                },300);
+            }
+            div.onmouseout = function(){
+                // mouseout되면 커지는데 걸리는 시간(duration)을 초기화해 잔상없앰
+                clearTimeout(this.timeId)
+                // 여기 this는 setTimeout 안에 있지 않기 때문에 div를 가리킴
+                this.setAttribute("class", "image");
+            }
 
             var img = document.createElement("img");
             // 각각 이미지 주소는 json에 적혀있음
