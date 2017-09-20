@@ -58,6 +58,7 @@ req.onreadystatechange = function() {
 }
 req.send();
 
+
 function selectAll(btn){
     var images = document.getElementsByClassName("image");
     for(var i = 0; i< images.length; i++) {
@@ -78,4 +79,26 @@ function selectAll(btn){
     } else {
         btn.value = "Unselect All";
     }
+}
+
+
+function slideShow(btn){
+    var images = document.getElementsByClassName("image");
+    var index = 0;
+    images[0].setAttribute("class", "image image-magnified");
+    //images[0].classList.add("image-magnified");
+    
+    var intervalID = setInterval( function() {
+        images[index].setAttribute("class", "image");
+        //images[index].classList.add("image-magnified");
+        index++;
+        if(index < images.length) {
+            images[index].setAttribute("class", "image image-magnified");
+            //images[index].classList.remove("image-magnified");
+        } else {
+            clearInterval(intervalID);
+        }
+
+    }, 1000);
+
 }
