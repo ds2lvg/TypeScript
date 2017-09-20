@@ -2,6 +2,13 @@
 body{
     overflow: hidden;
 }
+.btn_wrap{
+    padding: 20px;
+}
+.btn_wrap input{
+    padding: 10px;
+    margin-bottom: 10px;
+}
 .image{
     position:relative;
     float: left;
