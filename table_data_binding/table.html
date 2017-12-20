@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <table border="1" id="table1">
+        <thead>
+            <th data-field="name">이름</th>
+            <th data-field="gender">성별</th>
+            <th data-field="address">주소</th>
+            <th data-field="id">아이디</th>
+            <th data-field="regDate">가입일</th>
+            <th data-field="btn">유저삭제</th>
+        </thead>
+        <tbody id="tb1"></tbody>
+    </table>
+    <div id="nodeDiv"></div>
+</body>
+<script>
+    var tableObj = document.getElementById("table1");
+    var nodes = tableObj.childNodes; // thead, tbody
+    var divObj = document.getElementById("nodeDiv");
+    var thObj = nodes[1].childNodes; // thead의 객체들 = tr
+    var trObj = thObj[1].childNodes; // tr의 객체들 = th
+    var keyStrs = new Array();
+
+    for (var i = 0; i < trObj.length; i++) {
+        var tro = trObj[i];
+        try {
+            if(tro.getAttribute("data-field") !=null) {
+                keyStrs[keyStrs.length] = tro.getAttribute("data-field")
+            }
+        } catch(e) {
+            
+        }
+    }
+    divObj.innerHTML += keyStrs;
+
+    var tbList = {};
+    tbList["id"] = "kjm"
+    tbList["name"] = "김종민";
+    tbList["address"] = "서울";
+    tbList["gender"] = "남자";
+    tbList["regDate"] = "2017-09-24";
+    tbList["btn"] = '<input type="button" value="삭제">';
+
+    var tb1Str = "";
+    tb1Str += "<tr>";
+    tb1Str += "<td>" + tbList["name"] + "</td>";
+    tb1Str += "<td>" + tbList["address"] + "</td>";
+    tb1Str += "<td>" + tbList["gender"] + "</td>";
+    tb1Str += "<td>" + tbList["id"] + "</td>";
+    tb1Str += "<td>" + tbList["regDate"] + "</td>";
+    tb1Str += "<td>" + tbList["btn"] + "</td>";
+
+    var tbObj = document.getElementById("tb1");
+    tbObj.innerHTML = tb1Str;
+    //alert(tableObj.getAttribute("id"));
+
+</script>
+</html>

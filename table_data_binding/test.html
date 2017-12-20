@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./test.js"></script>
+    <script src="./person.js"></script>
+</head>
+<body>
+    <input type="text" name="cnt" id="cnt">
+    <div id="result_div"></div>
+    <input type="button" id="cntBnt" value="생성" onclick="makeTable()">
+<script>
+// var t = new Test();
+// t.alertStr("a"); // undefined
+var p = new Person("김종민",1,"남자","서울"); // 여기 name은 p_name을 받는 별개의 영역
+// p.name = "p.name 쓰면 이름 바뀌나 테스트" // 여기 name은 this.name을 덮어쓴다
+p.writePersonInfo();
+p.setName("김수현");
+p.writePersonInfo();
+p.play = function(){ // this.play 오버라이딩
+    //잠시 꺼놓음 alert("놀고 있네요")
+}
+p.play();
+function makeTable() {
+    var cntObj = document.getElementById("cnt");
+    var count = new Number(cntObj.value);
+    var str ="<table>";
+    var rDivObj = document.getElementById("result_div");
+    for(var i=1; i<=count; i++) {
+        str += "<tr>";
+        for(var j=1; j<=count; j++) {
+            str += "<td>" + (((i-1)*2)+j) + "</td>";
+        }
+        str += "</tr>";
+    }
+    str += "</table>"
+    rDivObj.innerHTML = str;
+}
+
+</script>
+</body>
+</html>
